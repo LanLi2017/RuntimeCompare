@@ -17,17 +17,17 @@ with open('runtime_Model.json')as f:
 # need further develop for the OR operation...
 def or_operation(dicts):
     if dicts['op'] == 'core/column-rename':
-        oldcol = dicts['oldColumnName']
-        newcol = dicts['newColumnName']
-        refine.RefineProject(refine.RefineServer(), projectID).rename_column(oldcol, newcol)
+        old_col = dicts['oldColumnName']
+        new_col = dicts['newColumnName']
+        refine.RefineProject(refine.RefineServer(), projectID).rename_column(old_col, new_col)
     elif dicts['op'] == 'core/text-transform':
-        columnname = dicts['columnName']
+        column_name = dicts['columnName']
         expression = dicts['expression']
-        refine.RefineProject(refine.RefineServer(), projectID).text_transform(columnname, expression)
+        refine.RefineProject(refine.RefineServer(), projectID).text_transform(column_name, expression)
     elif dicts['op'] == 'core/column-split':
-        columnname = dicts['columnName']
+        column_name = dicts['columnName']
         separator = dicts['separator']
-        refine.RefineProject(refine.RefineServer(), projectID).split_column(columnname, separator)
+        refine.RefineProject(refine.RefineServer(), projectID).split_column(column_name, separator)
 
 
 # pool for  parallel processes
