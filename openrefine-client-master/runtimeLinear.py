@@ -3,8 +3,8 @@ import time
 
 from google.refine import refine
 
-file_path=raw_input('input the file path: ')
-file_name=raw_input('input the file name: ')
+file_path='Menupart.csv'
+file_name='MenupartLineartest'
 
 
 def judgeFunction(dicts,projectID):
@@ -22,8 +22,8 @@ def judgeFunction(dicts,projectID):
         refine.RefineProject(refine.RefineServer(),projectID).split_column(columnName,separator)
 
 
-start_time=time.time()
 
+start_time=time.time()
 # input raw dataset A
 
 projectID=refine.Refine(refine.RefineServer()).new_project(file_path,file_name)[1]
@@ -32,6 +32,7 @@ projectID=refine.Refine(refine.RefineServer()).new_project(file_path,file_name)[
 # Linear operations :
 with open('runtime_Model.json')as f:
     data=json.load(f)
+
 
 for dicts in data:
     judgeFunction(dicts,projectID)
@@ -47,3 +48,4 @@ total_time=end_time-start_time
 print('Linear time: '+ str(total_time))
 
 # Linear time: 0.243105888367
+# 0.102478027344  0.16589307785
