@@ -40,12 +40,12 @@
   },
   {
     "op": "core/text-transform",
-    "description": "Text transform on cells in column City&Country using expression value.toLowercase()",
+    "description": "Text transform on cells in column place using expression value.toLowercase()",
     "engineConfig": {
       "mode": "row-based",
       "facets": []
     },
-    "columnName": "City&Country",
+    "columnName": "place",
     "expression": "value.toLowercase()",
     "onError": "keep-original",
     "repeat": false,

@@ -4,8 +4,8 @@ from multiprocessing import Pool
 
 from google.refine import refine
 
-FILE_PATH = 'Menupart.csv'
-FILE_NAME = 'MenupartCompareModel'
+FILE_PATH = 'Menu.csv'
+FILE_NAME = 'MenupartCompareModel1'
 
 # input raw dataset A
 projectID = refine.Refine(refine.RefineServer()).new_project(FILE_PATH, FILE_NAME)[1]
