@@ -45,7 +45,7 @@ def Linear_data():
         OR_operation(dicts)
 
 
-def parallel_time_it():
+def Parallel_time_it():
     p=Pool(5)
     start = time.time()
     for _ in range(1000):
@@ -55,7 +55,7 @@ def parallel_time_it():
 
 
 def main():
-    parallel_time_it()
+    Parallel_time_it()
     Linear_time_it(Linear_data)
 
 
