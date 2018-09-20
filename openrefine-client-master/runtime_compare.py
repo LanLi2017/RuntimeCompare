@@ -8,14 +8,13 @@ file_path='Menupart.csv'
 file_name='MenupartSPtest'
 
 
-start_time=time.time()
 # input raw dataset A
 projectID=refine.Refine(refine.RefineServer()).new_project(file_path,file_name)[1]
 
 with open('runtime_Model.json')as f:
     data=json.load(f)
 
-# parallel operation B and operation C
+# need further develop...
 def OR_operation(dicts):
     if dicts['op']=='core/column-rename':
             oldcol=dicts['oldColumnName']
@@ -30,7 +29,7 @@ def OR_operation(dicts):
         separator=dicts['separator']
         refine.RefineProject(refine.RefineServer(),projectID).split_column(columnName,separator)
 
-
+# loop 1000 times for linear model
 def Linear_time_it(func, times=1000):
     start = time.time()
     for _ in range(times):
@@ -45,6 +44,7 @@ def Linear_data():
         OR_operation(dicts)
 
 
+# loop 1000 times for parallel model
 def Parallel_time_it():
     p=Pool(5)
     start = time.time()
