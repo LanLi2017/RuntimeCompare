@@ -4,29 +4,29 @@ from multiprocessing import Pool
 
 from google.refine import refine
 
-file_path = 'Menupart.csv'
-file_name = 'MenupartSPtest'
+FILE_PATH = 'Menupart.csv'
+FILE_NAME = 'MenupartCompareModel'
 
 # input raw dataset A
-projectID = refine.Refine(refine.RefineServer()).new_project(file_path, file_name)[1]
+projectID = refine.Refine(refine.RefineServer()).new_project(FILE_PATH, FILE_NAME)[1]
 
 with open('runtime_Model.json')as f:
     data = json.load(f)
 
 
 # need further develop for the OR operation...
-def or_operation(dicts):
-    if dicts['op'] == 'core/column-rename':
-        old_col = dicts['oldColumnName']
-        new_col = dicts['newColumnName']
+def or_operation(params):
+    if params['op'] == 'core/column-rename':
+        old_col = params['oldColumnName']
+        new_col = params['newColumnName']
         refine.RefineProject(refine.RefineServer(), projectID).rename_column(old_col, new_col)
-    elif dicts['op'] == 'core/text-transform':
-        column_name = dicts['columnName']
-        expression = dicts['expression']
+    elif params['op'] == 'core/text-transform':
+        column_name = params['columnName']
+        expression = params['expression']
         refine.RefineProject(refine.RefineServer(), projectID).text_transform(column_name, expression)
-    elif dicts['op'] == 'core/column-split':
-        column_name = dicts['columnName']
-        separator = dicts['separator']
+    elif params['op'] == 'core/column-split':
+        column_name = params['columnName']
+        separator = params['separator']
         refine.RefineProject(refine.RefineServer(), projectID).split_column(column_name, separator)
 
 
